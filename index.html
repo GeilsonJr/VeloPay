@@ -528,8 +528,8 @@ footer{background:var(--dark2);padding:60px 64px 28px;border-top:1px solid rgba(
     <div class="cta-eyebrow">Comece agora</div>
     <h2 class="cta-title">Pronto para oferecer<br><span>parcelamento?</span></h2>
     <p class="cta-sub">Entre em contato e receba uma proposta sem compromisso.<br>Respondemos em até 1 hora útil.</p>
-    <p class="cta-success" id="ctaSuccess">Recebemos sua solicitação! Nossa equipe entra em contato em breve.</p>
-    <form class="cta-form" id="proposalForm" action="https://formspree.io/f/SEU_FORM_ID" method="POST">
+    <p class="cta-success" id="ctaSuccess">Abrimos o WhatsApp com sua mensagem pronta — é só confirmar o envio por lá!</p>
+    <form class="cta-form" id="proposalForm">
       <div class="cta-field">
         <label for="iNome" class="sr-only">Nome do cartório</label>
         <input type="text" class="cta-in" placeholder="Nome do cartório" id="iNome" name="nome">
@@ -625,7 +625,7 @@ const iContato = document.getElementById('iContato');
 const erroNome = document.getElementById('erroNome');
 const erroContato = document.getElementById('erroContato');
 
-proposalForm.addEventListener('submit', async (e) => {
+proposalForm.addEventListener('submit', (e) => {
   e.preventDefault();
   let valid = true;
   if (!iNome.value.trim()) {
@@ -646,30 +646,11 @@ proposalForm.addEventListener('submit', async (e) => {
   }
   if (!valid) return;
 
-  const btn = proposalForm.querySelector('button[type="submit"]');
-  const originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
+  const mensagem = 'Olá, equipe VeloPay! Sou do cartório "' + iNome.value.trim() + '" e gostaria de receber uma proposta.\n\nContato: ' + iContato.value.trim();
+  window.open('https://wa.me/5561985177034?text=' + encodeURIComponent(mensagem), '_blank');
 
-  try {
-    const resp = await fetch(proposalForm.action, {
-      method: 'POST',
-      body: new FormData(proposalForm),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (resp.ok) {
-      proposalForm.style.display = 'none';
-      document.getElementById('ctaSuccess').style.display = 'block';
-    } else {
-      erroContato.textContent = 'Não foi possível enviar agora. Tente pelo WhatsApp abaixo.';
-      btn.disabled = false;
-      btn.textContent = originalText;
-    }
-  } catch (err) {
-    erroContato.textContent = 'Não foi possível enviar agora. Tente pelo WhatsApp abaixo.';
-    btn.disabled = false;
-    btn.textContent = originalText;
-  }
+  proposalForm.style.display = 'none';
+  document.getElementById('ctaSuccess').style.display = 'block';
 });
 </script>
 </body>
