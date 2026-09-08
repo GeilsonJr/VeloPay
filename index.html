@@ -3,25 +3,655 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VeloPay – Em manutenção</title>
-<meta name="robots" content="noindex, nofollow">
+<title>VeloPay – Parcelamento para Cartórios</title>
+<meta name="description" content="Parcelamento em até 18x no cartão para o seu Cartório, sem mensalidade ou aluguel. Receba o valor integral no mesmo dia (D+0). 100% conforme CNJ e LGPD.">
+<link rel="canonical" href="https://www.usevelopay.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://www.usevelopay.com.br/">
+<meta property="og:title" content="VeloPay – Parcelamento para Cartórios">
+<meta property="og:description" content="Parcelamento em até 18x no cartão para o seu Cartório, sem mensalidade ou aluguel. Receba o valor integral no mesmo dia (D+0).">
+<meta property="og:image" content="https://www.usevelopay.com.br/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VeloPay – Parcelamento para Cartórios">
+<meta name="twitter:description" content="Parcelamento em até 18x no cartão para o seu Cartório, sem mensalidade ou aluguel. Receba o valor integral no mesmo dia (D+0).">
+<meta name="twitter:image" content="https://www.usevelopay.com.br/img/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800;12..96,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
+:root{
+  --purple:#625BA8;--purple2:#7C72C4;--purple-light:#EAE7F5;--purple-mid:#F5F3FA;
+  --teal:#5DC7D6;--teal-dark:#3AA3B3;--teal-deep:#2B7A87;--teal-light:#E7F6F8;
+  --success:#3F9142;--success-bright:#5FBF63;--success-light:#EAF5EB;
+  --dark:#100C28;--dark2:#18143A;--text:#18143A;--muted:#6A6890;
+  --border:#E8E4F4;--bg:#F8F7FE;--white:#FFFFFF;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',Arial,sans-serif;background:#F8F7FE;color:#18143A;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px;text-align:center}
-.wrap{max-width:420px}
-img{height:56px;width:auto;margin-bottom:32px}
-h1{font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:800;font-size:1.7rem;color:#100C28;margin-bottom:12px;letter-spacing:-0.02em}
-p{font-size:0.98rem;color:#6A6890;line-height:1.6}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:70px;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{color:var(--muted);font-size:0.88rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--purple)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn-ghost-nav{color:var(--purple);border:1.5px solid rgba(98,91,168,0.3);padding:9px 20px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.83rem;transition:all 0.2s;background:transparent}
+.btn-ghost-nav:hover{background:var(--purple-light);border-color:var(--purple)}
+.btn-solid-nav{background:var(--purple);color:white;padding:10px 20px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.83rem;box-shadow:0 4px 16px rgba(98,91,168,0.3);transition:all 0.2s}
+.btn-solid-nav:hover{background:var(--purple2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(98,91,168,0.42)}
+.nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:transparent;border:none;cursor:pointer;padding:0;flex-shrink:0}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:transform 0.25s,opacity 0.25s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;z-index:199;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 16px 32px rgba(16,12,40,0.1);flex-direction:column;gap:18px;max-height:0;overflow:hidden;opacity:0;padding:0 28px;transition:max-height 0.3s ease,opacity 0.3s ease,padding 0.3s ease}
+.mobile-menu.open{max-height:420px;opacity:1;padding:20px 28px}
+.mobile-menu-backdrop{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;z-index:198;background:rgba(16,12,40,0.4);opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.mobile-menu-backdrop.open{opacity:1;pointer-events:auto}
+.mobile-menu-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mobile-menu-links a{display:block;padding:13px 2px;color:var(--text);font-size:0.95rem;font-weight:600;border-bottom:1px solid var(--border)}
+.mobile-menu-actions{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.mobile-menu-actions .btn-ghost-nav,.mobile-menu-actions .btn-solid-nav{text-align:center;width:100%}
+@media(prefers-reduced-motion:reduce){.mobile-menu,.nav-burger span{transition:none}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 64px 80px;position:relative;overflow:hidden;background:var(--white)}
+.hero-blob-1{position:absolute;top:-200px;right:-150px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(98,91,168,0.09) 0%,transparent 65%);pointer-events:none}
+.hero-blob-2{position:absolute;bottom:-180px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(58,163,179,0.09) 0%,transparent 65%);pointer-events:none}
+.hero-dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(98,91,168,0.11) 1.2px,transparent 1.2px);background-size:36px 36px;mask-image:radial-gradient(ellipse 75% 75% at 65% 40%,black 0%,transparent 80%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;max-width:1280px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(3rem,5vw,5.2rem);font-weight:900;line-height:0.97;letter-spacing:-0.045em;color:var(--dark);margin-bottom:22px}
+.h1-block{display:block}
+.h1-purple{color:var(--purple)}
+.h1-row{display:flex;align-items:baseline;gap:12px}
+.h1-green-big{color:var(--teal-dark);font-size:1.05em}
+.hero-desc{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:460px;margin-bottom:36px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--purple);color:white;padding:15px 28px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:0.93rem;box-shadow:0 6px 24px rgba(98,91,168,0.38);transition:all 0.25s}
+.btn-primary:hover{background:var(--purple2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(98,91,168,0.5)}
+.btn-secondary{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--text);border:1.5px solid var(--border);padding:15px 28px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.93rem;transition:all 0.25s}
+.btn-secondary:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-mid)}
+.hero-stats{display:flex;padding-top:36px;border-top:1px solid var(--border)}
+.stat-item{padding-right:32px;margin-right:32px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none;padding-right:0;margin-right:0}
+.stat-val{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:2.2rem;color:var(--purple);line-height:1}
+.stat-label{font-size:0.77rem;color:var(--muted);margin-top:4px}
+
+/* ── CARD 3D ── */
+.hero-card-logo{
+  text-align:center;
+  margin-bottom:20px;
+}
+.hero-card-logo img{
+  height:120px;
+  width:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 24px rgba(98,91,168,0.18));
+}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.credit-card{width:330px;height:202px;border-radius:20px;background:linear-gradient(135deg,#2E1290 0%,#625BA8 45%,#1E6E78 100%);box-shadow:0 40px 72px rgba(98,91,168,0.3),0 12px 28px rgba(0,0,0,0.15),inset 0 1px 0 rgba(255,255,255,0.2);padding:22px 24px;transform:perspective(900px) rotateY(-14deg) rotateX(5deg);transition:transform 0.7s ease;position:relative;overflow:hidden}
+.credit-card:hover{transform:perspective(900px) rotateY(-5deg) rotateX(2deg)}
+.card-shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.13) 50%,transparent 70%);animation:shimmer 3s ease-in-out infinite;pointer-events:none}
+@keyframes shimmer{0%{left:-100%}60%,100%{left:160%}}
+.card-stripe{position:absolute;left:0;right:0;top:36%;height:13%;background:rgba(255,255,255,0.07)}
+.card-chip{width:40px;height:30px;border-radius:6px;background:linear-gradient(135deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08));border:1px solid rgba(255,255,255,0.16);position:relative;margin-bottom:18px}
+.card-chip::after{content:'';position:absolute;inset:5px;border-radius:3px;border:1px solid rgba(255,255,255,0.1)}
+.chip-v{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)}
+.chip-h{position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.12)}
+.card-logo-top{position:absolute;top:18px;right:20px}
+.card-logo-top img{height:26px;width:auto;filter:brightness(0) invert(1);opacity:0.82}
+.card-number{position:absolute;bottom:46px;left:22px;color:rgba(255,255,255,0.5);font-size:0.76rem;letter-spacing:0.2em}
+.card-name{position:absolute;bottom:20px;left:22px;color:rgba(255,255,255,0.82);font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em}
+.card-expiry{position:absolute;bottom:20px;right:22px;text-align:right}
+.card-exp-label{font-size:0.55rem;color:rgba(255,255,255,0.38)}
+.card-exp-val{font-size:0.76rem;color:rgba(255,255,255,0.68);font-family:'Bricolage Grotesque',sans-serif;font-weight:700}
+.fbadge{position:absolute;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:11px 15px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 32px rgba(98,91,168,0.11),0 2px 8px rgba(0,0,0,0.05)}
+.fb-a{top:-16px;left:-56px;animation:fltA 4s ease-in-out infinite}
+.fb-b{bottom:16px;right:-48px;animation:fltB 5s ease-in-out infinite}
+.fb-c{bottom:-18px;left:24px;animation:fltA 4.5s ease-in-out infinite 0.9s}
+@keyframes fltA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fltB{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.fb-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fb-ico svg{width:16px;height:16px}
+.fb-ico-g{background:var(--success-light);color:var(--success)}
+.fb-ico-p{background:var(--purple-light);color:var(--purple)}
+.diff-ico svg,.lb-ico svg,.pf-ico svg{width:20px;height:20px}
+.di-p{color:var(--purple)}
+.di-g{color:var(--teal-deep)}
+.lb-ico-p{color:var(--purple)}
+.lb-ico-g{color:var(--teal-deep)}
+.pf-ico{color:var(--purple)}
+.fb-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.74rem;color:var(--dark)}
+.fb-sub{font-size:0.65rem;color:var(--muted);margin-top:1px}
+
+/* ── SECTION SHARED ── */
+.sec-wrap{padding:92px 64px}
+.sec-wrap.alt{background:var(--bg)}
+.sec-wrap.white{background:var(--white)}
+.sec-wrap.dark-sec{background:var(--dark);color:white}
+.sec-inner{max-width:1280px;margin:0 auto;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.73rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--purple);border-radius:2px;flex-shrink:0}
+.sec-title{font-size:clamp(2rem,3.2vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--dark);margin-bottom:12px}
+.sec-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.72}
+.sec-wrap.dark-sec .sec-title{color:white}
+.sec-wrap.dark-sec .sec-sub{color:rgba(255,255,255,0.48)}
+.sec-wrap.dark-sec .eyebrow{color:#5DC7D6}
+.sec-wrap.dark-sec .eyebrow::before{background:#5DC7D6}
+
+/* ── HOW ── */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:52px;background:var(--border);gap:1px}
+.how-step{background:var(--white);padding:36px 30px;position:relative;transition:background 0.3s}
+.how-step:hover{background:var(--purple-mid)}
+.step-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:3.6rem;line-height:1;background:linear-gradient(135deg,var(--purple) 0%,rgba(98,91,168,0.18) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px}
+.how-step:hover .step-num{background:linear-gradient(135deg,var(--purple) 0%,var(--teal) 100%);-webkit-background-clip:text;background-clip:text}
+.step-badge{display:inline-flex;align-items:center;background:var(--purple-light);color:var(--purple);font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.step-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.02rem;color:var(--dark);margin-bottom:8px}
+.step-desc{font-size:0.875rem;color:var(--muted);line-height:1.65}
+.step-connector{position:absolute;top:50%;right:-1px;width:2px;height:40px;background:linear-gradient(to bottom,var(--purple),var(--teal));transform:translateY(-50%);z-index:1}
+
+/* ── DIFERENCIAIS ── */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.diff-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all 0.3s;opacity:0;transform:translateY(18px)}
+.diff-card.visible{opacity:1;transform:translateY(0)}
+.diff-card:hover{border-color:var(--purple);transform:translateY(-5px);box-shadow:0 20px 44px rgba(98,91,168,0.12);background:var(--purple-mid)}
+.diff-card:hover .diff-title{color:var(--purple)}
+.diff-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:18px;transition:all 0.3s}
+.di-p{background:var(--purple-light);border:1px solid rgba(98,91,168,0.12)}
+.di-g{background:var(--teal-light);border:1px solid rgba(58,163,179,0.15)}
+.diff-card:hover .diff-ico{background:var(--purple-light);border-color:rgba(98,91,168,0.2)}
+.diff-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.97rem;color:var(--dark);margin-bottom:8px;transition:color 0.3s}
+.diff-desc{font-size:0.855rem;color:var(--muted);line-height:1.65}
+
+/* ── CONFORMIDADE LEGAL – v3 style, melhor centralizado ── */
+.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto}
+.legal-badges{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.lb{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:17px 19px;transition:all 0.35s;opacity:0;transform:translateY(14px)}
+.lb.visible{opacity:1;transform:translateY(0)}
+.lb:hover{border-color:rgba(98,91,168,0.45);background:rgba(98,91,168,0.08)}
+.lb-ico{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.lb-ico-p{background:rgba(98,91,168,0.25)}
+.lb-ico-g{background:rgba(58,163,179,0.18)}
+.lb-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.9rem;color:white;margin-bottom:3px}
+.lb-desc{font-size:0.79rem;color:rgba(255,255,255,0.42);line-height:1.55}
+.legal-stats{display:flex;flex-direction:column;gap:14px}
+.ls{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:26px 28px;position:relative;overflow:hidden}
+.ls::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal))}
+.ls-big{padding:30px 28px}
+.ls-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;background:linear-gradient(135deg,#A79FE0,#5DC7D6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px}
+.ls-num.big{font-size:2.6rem}
+.ls-num.med{font-size:2.2rem}
+.ls-desc{font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.6}
+.ls-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ── PORTAL – 2 colunas, dashboard maior (v4 layout + v5 dashboard) ── */
+.portal-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
+.portal-feats{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.pf{display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);border-radius:12px;padding:15px 17px;background:var(--white);transition:all 0.25s;opacity:0;transform:translateY(12px)}
+.pf.visible{opacity:1;transform:translateY(0)}
+.pf:hover{border-color:rgba(98,91,168,0.28);box-shadow:0 8px 24px rgba(98,91,168,0.07)}
+.pf-ico{width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.95rem;background:var(--purple-light)}
+.pf-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.86rem;color:var(--dark);margin-bottom:2px}
+.pf-desc{font-size:0.79rem;color:var(--muted)}
+
+/* dashboard enriquecido */
+.dash{background:var(--dark);border-radius:18px;padding:24px;box-shadow:0 32px 64px rgba(16,12,40,0.18),0 0 0 1px rgba(255,255,255,0.05)}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.dash-title-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.9rem;color:white}
+.dash-live{background:rgba(63,145,66,0.14);border:1px solid rgba(63,145,66,0.24);color:var(--success-bright);font-size:0.65rem;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.04em}
+.dash-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.dk{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px}
+.dk-l{font-size:0.59rem;color:rgba(255,255,255,0.28);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.dk-v{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;color:white}
+.dk-v.g{color:var(--success)}
+.dk-c{font-size:0.6rem;color:var(--success);margin-top:3px}
+.dash-body{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.dash-chart{background:rgba(255,255,255,0.02);border-radius:12px;padding:16px}
+.chart-lbl{font-size:0.58rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px}
+.bars{display:flex;align-items:flex-end;gap:5px;height:68px}
+.b{flex:1;border-radius:3px 3px 0 0;transition:opacity 0.2s}
+.b:hover{opacity:0.75}
+.b.p{background:linear-gradient(to top,var(--purple),var(--purple2))}
+.b.g{background:linear-gradient(to top,var(--teal-dark),var(--teal))}
+.blbls{display:flex;gap:5px;margin-top:6px}
+.bl{flex:1;text-align:center;font-size:0.53rem;color:rgba(255,255,255,0.2)}
+.dash-recent{background:rgba(255,255,255,0.02);border-radius:12px;padding:16px}
+.recent-lbl{font-size:0.58rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+.recent-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.recent-item:last-child{border-bottom:none;padding-bottom:0}
+.ri-name{font-size:0.72rem;color:rgba(255,255,255,0.65);font-weight:500}
+.ri-time{font-size:0.61rem;color:rgba(255,255,255,0.24);margin-top:2px}
+.ri-val{font-size:0.74rem;color:var(--success);font-family:'Bricolage Grotesque',sans-serif;font-weight:700;white-space:nowrap}
+
+/* ── FAQ ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:52px}
+.faq-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.25s}
+.faq-item:hover{border-color:rgba(98,91,168,0.22)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;text-align:left;padding:19px 21px;cursor:pointer;gap:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:0.88rem;color:var(--dark);transition:color 0.2s;user-select:none}
+.faq-q:hover{color:var(--purple)}
+.faq-plus{width:24px;height:24px;border-radius:6px;flex-shrink:0;background:var(--purple-light);border:1px solid rgba(98,91,168,0.18);color:var(--purple);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.3s;font-family:monospace}
+.faq-item.open .faq-plus{transform:rotate(45deg);background:var(--purple);border-color:var(--purple);color:white}
+.faq-a{padding:0 21px;max-height:0;overflow:hidden;font-size:0.85rem;color:var(--muted);line-height:1.7;transition:max-height 0.35s,padding 0.35s}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+
+/* ── CTA ── */
+.cta-sec{padding:100px 64px;text-align:center;background:linear-gradient(135deg,#2E1290 0%,var(--purple) 45%,#1E6E78 100%);position:relative;overflow:hidden}
+.cta-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.73rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px}
+.cta-eyebrow::before{content:'';width:18px;height:2px;background:rgba(255,255,255,0.35);border-radius:2px}
+.cta-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.6rem);line-height:1.06;letter-spacing:-0.035em;color:white;margin-bottom:12px}
+.cta-title span{background:linear-gradient(90deg,#C5F0F3,#9FE0E6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.55);margin-bottom:44px;line-height:1.7}
+.cta-form{display:flex;gap:10px;max-width:500px;margin:0 auto 6px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.cta-field{flex:1;min-width:175px;display:flex;flex-direction:column;text-align:left}
+.cta-in{width:100%;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.18);color:white;padding:14px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:all 0.2s}
+.cta-in::placeholder{color:rgba(255,255,255,0.4)}
+.cta-in:focus{border-color:rgba(93,199,214,0.6);background:rgba(255,255,255,0.15)}
+.cta-in.error{border-color:#FF9B9B}
+.cta-error{font-size:0.72rem;color:#FFC2C2;min-height:16px;margin-top:5px}
+.cta-success{display:none;color:white;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:18px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.btn-cta{background:#fff;color:var(--purple);padding:14px 26px;border-radius:8px;border:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.25s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.btn-cta:hover{background:#F0EEFA;transform:translateY(-2px);box-shadow:0 8px 28px rgba(98,91,168,0.35)}
+.cta-wa{display:inline-flex;align-items:center;gap:9px;color:rgba(255,255,255,0.55);font-size:0.85rem;border:1.5px solid rgba(255,255,255,0.16);padding:11px 22px;border-radius:8px;transition:all 0.25s}
+.cta-wa:hover{color:white;border-color:rgba(255,255,255,0.38);background:rgba(255,255,255,0.07)}
+.cta-privacy{font-size:0.71rem;color:rgba(255,255,255,0.26);margin-top:14px}
+
+/* ── FOOTER ── */
+footer{background:var(--dark2);padding:60px 64px 28px;border-top:1px solid rgba(255,255,255,0.06)}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.ft-logo img{height:48px;width:auto;margin-bottom:14px;object-fit:contain}
+.ft-desc{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:230px}
+.ft-col-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:0.81rem;color:white;margin-bottom:15px}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-links a{font-size:0.8rem;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.ft-links a:hover{color:var(--teal)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:0.76rem;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:10px}
+.ft-btm-links{display:flex;gap:18px}
+.ft-btm-links a{font-size:0.76rem;color:rgba(255,255,255,0.28);transition:color 0.2s}
+.ft-btm-links a:hover{color:white}
+.wa{position:fixed;bottom:26px;right:26px;z-index:300;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(37,211,102,0.45);transition:all 0.25s}
+.wa:hover{transform:scale(1.1);box-shadow:0 10px 30px rgba(37,211,102,0.6)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  nav{padding:0 20px}.nav-links{display:none}.nav-actions{display:none}
+  .nav-burger{display:flex}.mobile-menu{display:flex}.mobile-menu-backdrop{display:block}
+  .sec-wrap,.cta-sec,footer{padding:68px 28px}
+  .hero{padding:108px 28px 68px}
+  .hero-inner{grid-template-columns:1fr}.hero-right{display:none}
+  .how-grid,.diff-grid,.faq-grid{grid-template-columns:1fr}
+  .how-step{border-bottom:1px solid var(--border)}
+  .legal-grid,.portal-grid{grid-template-columns:1fr;gap:36px}
+  .ls-row{grid-template-columns:1fr}
+  .dash-kpis{grid-template-columns:1fr 1fr}.dash-body{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:600px){
+  .hero-stats{flex-direction:column;gap:16px}
+  .stat-item{border-right:none;padding-right:0;margin-right:0;border-bottom:1px solid var(--border);padding-bottom:16px}
+  .stat-item:last-child{border-bottom:none}
+  .ft-top{grid-template-columns:1fr}
+  .cta-form{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <img src="img/logo.svg" alt="VeloPay">
-  <h1>Site em manutenção</h1>
-  <p>Estamos fazendo alguns ajustes por aqui. Voltamos em breve.</p>
+
+<!-- NAV -->
+<nav>
+  <a href="#" style="display:flex;align-items:center"><img src="img/logo.svg" alt="VeloPay" style="height:36px;width:auto;object-fit:contain"></a>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#portal">Portal</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#faq" class="btn-ghost-nav">Ver FAQ</a>
+    <a href="#contato" class="btn-solid-nav">Falar com especialista</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu-links">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#portal">Portal</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
+  </ul>
+  <div class="mobile-menu-actions">
+    <a href="#faq" class="btn-ghost-nav">Ver FAQ</a>
+    <a href="#contato" class="btn-solid-nav">Falar com especialista</a>
+  </div>
 </div>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-blob-1"></div><div class="hero-blob-2"></div><div class="hero-dot-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <h1>
+        <span class="h1-block">Parcelamento em até <span class="h1-purple">18x</span></span>
+        <span class="h1-block">no cartão para o seu</span>
+        <span class="h1-block"><span class="h1-green-big">Cartório</span></span>
+      </h1>
+      <p class="hero-desc">A plataforma para o seu cartório aceitar pagamentos no cartão — sem aluguel, sem mensalidade, com aplicação personalizada.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5561985177034" class="btn-primary" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="#como-funciona" class="btn-secondary">Como funciona <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-val">18x</div><div class="stat-label">Parcelamento no crédito</div></div>
+        <div class="stat-item"><div class="stat-val">R$0</div><div class="stat-label">Mensalidade ou aluguel</div></div>
+        <div class="stat-item"><div class="stat-val">D+0</div><div class="stat-label">Para receber suas vendas</div></div>
+      </div>
+    </div>
+    <div class="hero-right"><div class="hero-card-logo"><img src="img/logo.svg" alt="VeloPay"></div>
+      <div class="credit-card">
+        <div class="card-shimmer"></div><div class="card-stripe"></div>
+        <div class="card-chip"><div class="chip-v"></div><div class="chip-h"></div></div>
+        <div class="card-logo-top"><img src="img/logo-icon.svg" alt="VeloPay"></div>
+        <div class="card-number">•••• •••• •••• 4289</div>
+        <div class="card-name">CARTÓRIO DIGITAL</div>
+        <div class="card-expiry"><div class="card-exp-label">VÁLIDO ATÉ</div><div class="card-exp-val">12/28</div></div>
+      </div>
+      <div class="fbadge fb-a"><div class="fb-ico fb-ico-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><div><div class="fb-title">Pago · R$ 1.850,00</div><div class="fb-sub">Depósito no mesmo dia</div></div></div>
+      <div class="fbadge fb-b"><div class="fb-ico fb-ico-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><div><div class="fb-title">PCI-DSS · LGPD</div><div class="fb-sub">100% conforme CNJ</div></div></div>
+      <div class="fbadge fb-c"><div class="fb-ico fb-ico-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l6-6 4 4 6-8M14 6h6v6"/></svg></div><div><div class="fb-title">+18% este mês</div><div class="fb-sub">Portal em tempo real</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="sec-wrap alt" id="como-funciona"><div class="sec-inner">
+  <div class="eyebrow">Como funciona</div>
+  <h2 class="sec-title">Três passos para começar</h2>
+  <p class="sec-sub">Sem burocracia — em dias seu cartório já oferece parcelamento aos clientes.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-num">01</div><div class="step-badge">Parceria</div>
+      <div class="step-title">Cartório fecha com a VeloPay</div>
+      <p class="step-desc">Assinamos o credenciamento e instalamos a solução tecnológica no seu Cartório. Sem aluguel, sem mensalidade.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">02</div><div class="step-badge">Pagamento</div>
+      <div class="step-title">Cliente escolhe parcelar</div>
+      <p class="step-desc">O atendimento informa o valor na maquininha, e apresenta os valores a pagar com a taxa administrativa de acordo com a opção de pagamento.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">03</div><div class="step-badge">Recebimento</div>
+      <div class="step-title">Cartório recebe no D+0</div>
+      <p class="step-desc">As taxas ficam com o cliente. O Cartório recebe o valor integral em D+0, e acompanha tudo em tempo real pelo portal do cliente.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- DIFERENCIAIS -->
+<section class="sec-wrap white" id="diferenciais"><div class="sec-inner">
+  <div class="eyebrow">Diferenciais</div>
+  <h2 class="sec-title">Por que a VeloPay?</h2>
+  <p class="sec-sub">Cada detalhe desenvolvido para a realidade dos cartórios brasileiros.</p>
+  <div class="diff-grid">
+    <div class="diff-card"><div class="diff-ico di-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div class="diff-title">Taxa administrativa repassada ao cliente</div><p class="diff-desc">O cartório não arca com nenhuma taxa. A taxa administrativa é calculada automaticamente e repassada ao cliente com transparência e conformidade legal.</p></div>
+    <div class="diff-card"><div class="diff-ico di-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.4 1.1-2.5 2.5-2.5s2.5 1 2.5 2-1 1.5-2.5 2-2.5 1-2.5 2 1.1 2 2.5 2 2.5-1.1 2.5-2.5"/></svg></div><div class="diff-title">Zero custo para os Cartórios</div><p class="diff-desc">Sem mensalidade, sem aluguel, sem adesão. Você só paga sobre o que transacionar — zero risco para começar.</p></div>
+    <div class="diff-card"><div class="diff-ico di-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-6"/></svg></div><div class="diff-title">Portal de acompanhamento</div><p class="diff-desc">Painel com vendas em tempo real, calendário de recebíveis e relatórios de conciliação financeira.</p></div>
+    <div class="diff-card"><div class="diff-ico di-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div><div class="diff-title">Recebimento D+0</div><p class="diff-desc">Mesmo com o cliente parcelando em 18x, o cartório recebe o valor integral no mesmo dia da transação.</p></div>
+    <div class="diff-card"><div class="diff-ico di-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3 7.5-8 9-5-1.5-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="diff-title">Segurança certificada</div><p class="diff-desc">PCI-DSS, LGPD e servidores no Brasil. Dados protegidos com o mais alto padrão do mercado financeiro.</p></div>
+    <div class="diff-card"><div class="diff-ico di-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0116 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19v1a2 2 0 01-2 2h-3"/></svg></div><div class="diff-title">Suporte especializado</div><p class="diff-desc">Time com experiência em cartórios e meios de pagamento. Atendimento ágil que não impacta sua rotina.</p></div>
+  </div>
+</div></section>
+
+<!-- CONFORMIDADE LEGAL – v3 rebalanceado e centralizado -->
+<section class="sec-wrap dark-sec" id="conformidade"><div class="sec-inner">
+  <div class="legal-grid">
+    <div>
+      <div class="eyebrow">Conformidade legal</div>
+      <h2 class="sec-title">100% dentro<br>da legislação</h2>
+      <p class="sec-sub">Desenvolvida para garantir segurança jurídica plena ao cartório e total transparência aos seus clientes.</p>
+      <div class="legal-badges">
+        <div class="lb"><div class="lb-ico lb-ico-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 006 0L5 7zM19 7l-3 6a3 3 0 006 0l-3-6z"/></svg></div><div><div class="lb-title">Provimento CNJ Nº 127/2022</div><div class="lb-desc">Toda operação segue as diretrizes do CNJ para meios de pagamento em serventias extrajudiciais.</div></div></div>
+        <div class="lb"><div class="lb-ico lb-ico-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><div><div class="lb-title">LGPD – Proteção de Dados</div><div class="lb-desc">Tratamento de dados conforme a Lei Geral de Proteção de Dados, com política documentada e transparente.</div></div></div>
+        <div class="lb"><div class="lb-ico lb-ico-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 011-1h4a1 1 0 011 1v1M9 10h6M9 14h6M9 18h4"/></svg></div><div><div class="lb-title">Consentimento documentado</div><div class="lb-desc">Comprovante com valor bruto, líquido e taxa — consentimento registrado antes de cada cobrança.</div></div></div>
+      </div>
+    </div>
+    <div class="legal-stats">
+      <div class="ls ls-big"><div class="ls-num big">Lei 14.382</div><div class="ls-desc">A lei que modernizou os serviços notariais no Brasil ampliou as formas de pagamento aceitas — e a VeloPay está 100% em conformidade.</div></div>
+      <div class="ls-row">
+        <div class="ls"><div class="ls-num med">PCI-DSS</div><div class="ls-desc">Certificação internacional para processamento seguro de cartão.</div></div>
+        <div class="ls"><div class="ls-num med">100%</div><div class="ls-desc">Transparência — taxas discriminadas em cada comprovante.</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PORTAL DE VENDAS – v4 layout (2 col) + v5 dashboard -->
+<section class="sec-wrap alt" id="portal"><div class="sec-inner">
+  <div class="portal-grid">
+    <div>
+      <div class="eyebrow">Portal de Vendas</div>
+      <h2 class="sec-title">Tudo sob<br>controle</h2>
+      <p class="sec-sub">Acompanhe cada transação, preveja recebimentos e tome decisões com dados reais — de qualquer lugar.</p>
+      <div class="portal-feats">
+        <div class="pf"><div class="pf-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div><div><div class="pf-title">Calendário de recebíveis</div><div class="pf-desc">Veja com antecedência todos os valores a receber por data.</div></div></div>
+        <div class="pf"><div class="pf-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l6-6 4 4 6-8M14 6h6v6"/></svg></div><div><div class="pf-title">Acompanhamento em tempo real</div><div class="pf-desc">Cada venda aparece no painel assim que é processada na maquininha.</div></div></div>
+        <div class="pf"><div class="pf-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div><div><div class="pf-title">Relatórios para conciliação</div><div class="pf-desc">Exporte relatórios completos para conciliar com a contabilidade do cartório.</div></div></div>
+      </div>
+    </div>
+    <!-- dashboard rico da v5 -->
+    <div class="dash">
+      <div class="dash-top"><div class="dash-title-t" style="display:flex;align-items:center;gap:7px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M4 20V10M12 20V4M20 20v-6"/></svg>Painel VeloPay</div><div class="dash-live">● Ao vivo</div></div>
+      <div class="dash-kpis">
+        <div class="dk"><div class="dk-l">Faturamento</div><div class="dk-v g">R$ 48.2k</div><div class="dk-c">↑ +18%</div></div>
+        <div class="dk"><div class="dk-l">Transações</div><div class="dk-v">124</div><div class="dk-c" style="color:rgba(255,255,255,0.22)">mês</div></div>
+        <div class="dk"><div class="dk-l">A Receber</div><div class="dk-v">R$ 12.4k</div><div class="dk-c" style="color:rgba(255,255,255,0.22)">7 dias</div></div>
+        <div class="dk"><div class="dk-l">Ticket médio</div><div class="dk-v">R$ 389</div><div class="dk-c">↑ +6%</div></div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-chart">
+          <div class="chart-lbl">Vendas por dia — Março 2025</div>
+          <div class="bars">
+            <div class="b p" style="height:42%"></div><div class="b g" style="height:60%"></div>
+            <div class="b p" style="height:35%"></div><div class="b g" style="height:75%"></div>
+            <div class="b p" style="height:55%"></div><div class="b g" style="height:88%"></div>
+            <div class="b p" style="height:48%"></div><div class="b g" style="height:78%"></div>
+            <div class="b p" style="height:63%"></div><div class="b g" style="height:84%"></div>
+            <div class="b p" style="height:45%"></div><div class="b g" style="height:100%"></div>
+            <div class="b p" style="height:57%"></div><div class="b g" style="height:71%"></div>
+          </div>
+          <div class="blbls">
+            <div class="bl">S</div><div class="bl">T</div><div class="bl">Q</div><div class="bl">Q</div>
+            <div class="bl">S</div><div class="bl">S</div><div class="bl">T</div><div class="bl">Q</div>
+            <div class="bl">Q</div><div class="bl">S</div><div class="bl">S</div><div class="bl">T</div>
+            <div class="bl">Q</div><div class="bl">Q</div>
+          </div>
+        </div>
+        <div class="dash-recent">
+          <div class="recent-lbl">Últimas transações</div>
+          <div class="recent-item"><div><div class="ri-name">Escritura de compra</div><div class="ri-time">há 12 min</div></div><div class="ri-val">R$ 1.850</div></div>
+          <div class="recent-item"><div><div class="ri-name">Reconhecimento de firma</div><div class="ri-time">há 28 min</div></div><div class="ri-val">R$ 320</div></div>
+          <div class="recent-item"><div><div class="ri-name">Autenticação</div><div class="ri-time">há 45 min</div></div><div class="ri-val">R$ 180</div></div>
+          <div class="recent-item"><div><div class="ri-name">Procuração pública</div><div class="ri-time">há 1h</div></div><div class="ri-val">R$ 760</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="sec-wrap white" id="faq"><div class="sec-inner">
+  <div style="text-align:center">
+    <div class="eyebrow" style="justify-content:center">Dúvidas frequentes</div>
+    <h2 class="sec-title" style="text-align:center">Perguntas que os cartórios fazem</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item"><button class="faq-q" id="faqQ1" aria-expanded="false" aria-controls="faqA1">O cartório tem algum custo fixo?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA1" role="region" aria-labelledby="faqQ1">Não. A VeloPay não cobra mensalidade, aluguel ou taxa de adesão. Nossa remuneração é cobrada do cliente do cartório.</div></div>
+    <div class="faq-item"><button class="faq-q" id="faqQ2" aria-expanded="false" aria-controls="faqA2">Em quanto tempo começo a transacionar?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA2" role="region" aria-labelledby="faqQ2">Implantação no máximo em 2 dias após a assinatura do contrato.</div></div>
+    <div class="faq-item"><button class="faq-q" id="faqQ3" aria-expanded="false" aria-controls="faqA3">Quem paga os juros do parcelamento?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA3" role="region" aria-labelledby="faqQ3">O cliente final. O app calcula automaticamente os juros e apresenta o valor total ao cliente, que aceita antes de confirmar o pagamento.</div></div>
+    <div class="faq-item"><button class="faq-q" id="faqQ4" aria-expanded="false" aria-controls="faqA4">O cartório recebe o valor integral?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA4" role="region" aria-labelledby="faqQ4">Sim. O cartório recebe o valor integral sem nenhuma dedução no mesmo dia em que a transação for realizada (D0).</div></div>
+    <div class="faq-item"><button class="faq-q" id="faqQ5" aria-expanded="false" aria-controls="faqA5">Isso é permitido legalmente?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA5" role="region" aria-labelledby="faqQ5">Sim. O Provimento Nº 127/2022 do CNJ e a Lei 14.382/2022 autorizam o cartão de crédito em serventias e permitem o repasse das taxas ao usuário.</div></div>
+    <div class="faq-item"><button class="faq-q" id="faqQ6" aria-expanded="false" aria-controls="faqA6">Como funciona o suporte?<span class="faq-plus" aria-hidden="true">+</span></button><div class="faq-a" id="faqA6" role="region" aria-labelledby="faqQ6">Nossa equipe atende via WhatsApp e e-mail com agilidade. Profissionais com experiência em cartórios e meios de pagamento.</div></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contato">
+  <div class="cta-grid-overlay"></div><div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Comece agora</div>
+    <h2 class="cta-title">Pronto para oferecer<br><span>parcelamento?</span></h2>
+    <p class="cta-sub">Entre em contato e receba uma proposta sem compromisso.<br>Respondemos em até 1 hora útil.</p>
+    <p class="cta-success" id="ctaSuccess">Abrimos o WhatsApp com sua mensagem pronta — é só confirmar o envio por lá!</p>
+    <form class="cta-form" id="proposalForm">
+      <div class="cta-field">
+        <label for="iNome" class="sr-only">Nome do cartório</label>
+        <input type="text" class="cta-in" placeholder="Nome do cartório" id="iNome" name="nome">
+        <span class="cta-error" id="erroNome"></span>
+      </div>
+      <div class="cta-field">
+        <label for="iContato" class="sr-only">WhatsApp ou e-mail</label>
+        <input type="text" class="cta-in" placeholder="WhatsApp ou e-mail" id="iContato" name="contato">
+        <span class="cta-error" id="erroContato"></span>
+      </div>
+      <button type="submit" class="btn-cta">Quero uma proposta</button>
+    </form>
+    <a href="https://wa.me/5561985177034" class="cta-wa" target="_blank">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      Falar direto no WhatsApp
+    </a>
+    <p class="cta-privacy" style="display:flex;align-items:center;justify-content:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Dados protegidos conforme a LGPD. Não compartilhamos suas informações.</p>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div><div class="ft-logo"><img src="img/logo.svg" alt="VeloPay"></div><p class="ft-desc">A solução de parcelamento veloz e fácil para cartórios brasileiros. Seguro, simples e 100% conforme a legislação.</p></div>
+    <div><div class="ft-col-h">Navegação</div><ul class="ft-links"><li><a href="#inicio">Início</a></li><li><a href="#como-funciona">Como funciona</a></li><li><a href="#diferenciais">Diferenciais</a></li><li><a href="#portal">Portal</a></li><li><a href="#faq">Dúvidas</a></li></ul></div>
+    <div><div class="ft-col-h">Legal</div><ul class="ft-links"><li><a href="/politica-de-privacidade.html">Política de Privacidade</a></li><li><a href="/lgpd.html">LGPD</a></li><li><a href="/termos-de-uso.html">Termos de Uso</a></li></ul></div>
+    <div><div class="ft-col-h">Contato</div><ul class="ft-links"><li><a href="https://wa.me/5561985177034" target="_blank">WhatsApp</a></li><li><a href="mailto:faleconosco@usevelopay.com.br">E-mail</a></li></ul></div>
+  </div>
+  <div class="ft-bottom">
+    <div>© 2026 Velopay Soluções de Pagamentos Ltda – CNPJ 65.052.379/0001-29</div>
+    <div class="ft-btm-links"><a href="https://www.usevelopay.com.br">usevelopay.com.br</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5561985177034" class="wa" target="_blank">
+  <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</a>
+
+<script>
+const navBurger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+function closeMobileMenu(){
+  navBurger.setAttribute('aria-expanded','false');
+  navBurger.setAttribute('aria-label','Abrir menu');
+  mobileMenu.classList.remove('open');
+  mobileMenuBackdrop.classList.remove('open');
+}
+function openMobileMenu(){
+  navBurger.setAttribute('aria-expanded','true');
+  navBurger.setAttribute('aria-label','Fechar menu');
+  mobileMenu.classList.add('open');
+  mobileMenuBackdrop.classList.add('open');
+}
+navBurger.addEventListener('click', () => {
+  const isOpen = navBurger.getAttribute('aria-expanded') === 'true';
+  isOpen ? closeMobileMenu() : openMobileMenu();
+});
+mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && navBurger.getAttribute('aria-expanded') === 'true') {
+    closeMobileMenu();
+    navBurger.focus();
+  }
+});
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      q.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), (parseInt(e.target.dataset.i)||0)*100);
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12});
+document.querySelectorAll('.diff-card').forEach((el,i) => { el.dataset.i = i%3; io.observe(el); });
+document.querySelectorAll('.lb').forEach((el,i) => { el.dataset.i = i; io.observe(el); });
+document.querySelectorAll('.pf').forEach((el,i) => { el.dataset.i = i; io.observe(el); });
+const proposalForm = document.getElementById('proposalForm');
+const iNome = document.getElementById('iNome');
+const iContato = document.getElementById('iContato');
+const erroNome = document.getElementById('erroNome');
+const erroContato = document.getElementById('erroContato');
+
+proposalForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
+  if (!iNome.value.trim()) {
+    erroNome.textContent = 'Informe o nome do cartório.';
+    iNome.classList.add('error');
+    valid = false;
+  } else {
+    erroNome.textContent = '';
+    iNome.classList.remove('error');
+  }
+  if (!iContato.value.trim()) {
+    erroContato.textContent = 'Informe seu WhatsApp ou e-mail.';
+    iContato.classList.add('error');
+    valid = false;
+  } else {
+    erroContato.textContent = '';
+    iContato.classList.remove('error');
+  }
+  if (!valid) return;
+
+  const mensagem = 'Olá, equipe VeloPay! Sou do cartório "' + iNome.value.trim() + '" e gostaria de receber uma proposta.\n\nContato: ' + iContato.value.trim();
+  window.open('https://wa.me/5561985177034?text=' + encodeURIComponent(mensagem), '_blank');
+
+  proposalForm.style.display = 'none';
+  document.getElementById('ctaSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>
